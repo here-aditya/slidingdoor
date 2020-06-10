@@ -1,0 +1,61 @@
+<div id="container">
+
+    <div class="doorpanel">
+        <div class="block piece1"></div>
+        <div class="block piece2"></div>
+        <div class="block piece3"></div>
+        <div class="block piece4"></div>
+    </div>
+
+</div> <!-- end container -->
+
+
+
+
+<style>
+/* Wall measurement 600 X 300 , I assume :) */
+#container {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    border: 1px solid #aeaeae;
+    width: 600px;
+    height: 300px;
+}
+/* Door Panel measurement 442 X 212 , same as image size in PX */
+.doorpanel {
+    margin: auto;
+    width: 442px;
+    height: 212px;
+}
+/* Individual Door measurement */
+.block {
+    background-image:url(https://www.grmail.eu/Sliding-door.png);
+    width:110.5px;
+    height:212px;
+    position: relative;
+}
+.piece1 { background-position: 0 0; left: 0px; z-index: 99;}
+.piece2 { background-position: -110.5px 0; left: 110.5px; top: -212px; z-index: 0;}
+.piece3 { background-position: -221px 0; left: 221px; top: -424px; z-index: 0;}
+.piece4 { background-position: -331.5px 0; left: 331.5px; top: -636px; z-index: 99;}
+</style>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+function doAction()
+{
+    $('.piece2')
+        .animate({"margin-left": '-=100'}, 6000)
+        .delay(2000)
+        .animate({"margin-left": '+=100'}, 6000);
+    $('.piece3')
+        .animate({"margin-left": '+=100'}, 6000)
+        .delay(2000)
+        .animate({"margin-left": '-=100'}, 6000); 
+}   
+$(document).ready(function(){
+    window.setInterval(doAction, 1000);
+})
+</script>
