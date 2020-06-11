@@ -1,12 +1,15 @@
 <div id="container">
 
     <div class="doorpanel">
-        <div class="block piece1"></div>
-        <div class="block piece2"></div>
-        <div class="block piece3"></div>
-        <div class="block piece4"></div>
+        <div class="block fixed1"></div>
+        <div class="block slider1"></div>
+        <div class="block slider2"></div>
+        <div class="block fixed2"></div>
+        <div class="topPanel"></div>
+        <div class="bottomPanel"></div>
     </div>
 
+    <span class="autoTxt">Auto sensing door, move closer.</span>
 </div> <!-- end container -->
 
 
@@ -35,10 +38,27 @@
     height:212px;
     position: relative;
 }
-.piece1 { background-position: 0 0; left: 0px; z-index: 99;}
-.piece2 { background-position: -110.5px 0; left: 110.5px; top: -212px; z-index: 0;}
-.piece3 { background-position: -221px 0; left: 221px; top: -424px; z-index: 0;}
-.piece4 { background-position: -331.5px 0; left: 331.5px; top: -636px; z-index: 99;}
+
+.fixed1 { background-position: 0 0; left: 0px; z-index: 99;}
+.slider1 { background-position: -110.5px 0; left: 110.5px; top: -212px; z-index: 0;}
+.slider2 { background-position: -221px 0; left: 221px; top: -424px; z-index: 0;}
+.fixed2 { background-position: -331.5px 0; left: 331.5px; top: -636px; z-index: 99;}
+.topPanel { 
+    background-image:url(https://www.grmail.eu/Sliding-door.png); 
+    position: relative; 
+    background-position: -218px 0; left: 120px; top: -848px; height: 6px; width: 218px; z-index: 99;
+ }
+ .bottomPanel { 
+    background-image:url(https://www.grmail.eu/Sliding-door.png); 
+    position: relative; 
+    background-position: 0 0; left: 108px; top: -650px; height: 6px; width: 215px; z-index: 99;
+ }
+
+ .autoTxt {
+     position: absolute;
+     top: 43%;
+     left: 43%
+ }
 </style>
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -46,16 +66,19 @@
 <script>
 function doAction()
 {
-    $('.piece2')
-        .animate({"margin-left": '-=100'}, 6000)
-        .delay(2000)
-        .animate({"margin-left": '+=100'}, 6000);
-    $('.piece3')
-        .animate({"margin-left": '+=100'}, 6000)
-        .delay(2000)
-        .animate({"margin-left": '-=100'}, 6000); 
-}   
+    $('.slider1')
+        .animate({"margin-left": '-=100'}, 1000)
+        .delay(1000)
+        .animate({"margin-left": '+=100'}, 1000);
+    $('.slider2')
+        .animate({"margin-left": '+=100'}, 1000)
+        .delay(1000)
+        .animate({"margin-left": '-=100'}, 1000); 
+}
+
 $(document).ready(function(){
-    window.setInterval(doAction, 1000);
+    $('.slider1, .slider2').mouseenter(function() {
+        doAction();
+    })
 })
 </script>
