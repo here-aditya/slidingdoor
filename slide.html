@@ -1,12 +1,9 @@
 <div id="container">
 
     <div class="doorpanel">
-        <div class="block fixed1"></div>
-        <div class="block slider1"></div>
-        <div class="block slider2"></div>
-        <div class="block fixed2"></div>
-        <div class="topPanel"></div>
-        <div class="bottomPanel"></div>
+        <div class="block fixed"></div>
+        <div class="block sliderLeft"></div>
+        <div class="block sliderRight"></div>
     </div>
 
     <span class="autoTxt">Auto sensing door, move closer.</span>
@@ -33,32 +30,16 @@
 }
 /* Individual Door measurement */
 .block {
-    background-image:url(https://www.grmail.eu/Sliding-door.png);
-    width:110.5px;
-    height:212px;
+    width: 100%;
+    height: 100%; 
+    background-repeat: no-repeat;
     position: relative;
 }
 
-.fixed1 { background-position: 0 0; left: 0px; z-index: 99;}
-.slider1 { background-position: -110.5px 0; left: 110.5px; top: -212px; z-index: 0;}
-.slider2 { background-position: -221px 0; left: 221px; top: -424px; z-index: 0;}
-.fixed2 { background-position: -331.5px 0; left: 331.5px; top: -636px; z-index: 99;}
-.topPanel { 
-    background-image:url(https://www.grmail.eu/Sliding-door.png); 
-    position: relative; 
-    background-position: -218px 0; left: 120px; top: -848px; height: 6px; width: 218px; z-index: 99;
- }
- .bottomPanel { 
-    background-image:url(https://www.grmail.eu/Sliding-door.png); 
-    position: relative; 
-    background-position: 0 0; left: 108px; top: -650px; height: 6px; width: 215px; z-index: 99;
- }
-
- .autoTxt {
-     position: absolute;
-     top: 43%;
-     left: 43%
- }
+.fixed { background-image:url(fixed.png); z-index: 2;}
+.sliderLeft { background-image:url(slide-left.png); top: -206px; left: 117.5px; z-index: 1; }
+.sliderRight { background-image:url(slide-right.png); top: -418px; left: 221.5px; z-index: 1; }
+.autoTxt { position: absolute; top: 43%; left: 43%; }
 </style>
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -66,18 +47,18 @@
 <script>
 function doAction()
 {
-    $('.slider1')
-        .animate({"margin-left": '-=100'}, 1000)
+    $('.sliderLeft')
+        .animate({"margin-left": '-=96'}, 1000)
         .delay(1000)
-        .animate({"margin-left": '+=100'}, 1000);
-    $('.slider2')
+        .animate({"margin-left": '+=96'}, 1000);
+    $('.sliderRight')
         .animate({"margin-left": '+=100'}, 1000)
         .delay(1000)
         .animate({"margin-left": '-=100'}, 1000); 
 }
 
 $(document).ready(function(){
-    $('.slider1, .slider2').mouseenter(function() {
+    $('.sliderLeft, .sliderRight').mouseenter(function() {
         doAction();
     })
 })
