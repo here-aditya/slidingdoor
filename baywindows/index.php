@@ -69,7 +69,7 @@ function frameImage($inside = 0, $imagesPath = array(), $imgHeight = 600, $image
             $s_x2y1[0], $s_x2y1[1],     # Source Bottom Right 
             $d_x2y1[0], $d_x2y1[1],     # Destination Bottom Right 
             $s_x2y2[0], $s_x2y2[1],     # Source Top Right 
-            $d_x2y2[0], $d_x2y2[1],     # Destination Top Right 
+            $d_x2y2[0], $d_x2y2[1]      # Destination Top Right 
         );
         //echo '<pre>'; print_r($points); die;
 
@@ -111,6 +111,6 @@ frameImage(
             $angles = array(90, 180, 180, 180),  // array(40, 180, -10, 10)
             $poleColor = '#fefefe',
             $poleWidth = 5,
-            $poleHeight = 5,
+            $poleHeight = 5
         );    
 ?>
